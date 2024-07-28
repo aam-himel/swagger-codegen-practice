@@ -1,0 +1,115 @@
+openapi: 3.0.0
+info:
+  title: Library Management System API
+  description: This is a demo api creation project using swagger codegen
+  version: 1.0.0
+tags:
+  - name: book
+
+servers:
+  - url: http://localhost:3000/api/v1
+
+paths:
+  /book:
+    get:
+      summary: Get all the books
+      operationId: getAllBooks
+      responses:
+        '200':
+          description: A list of books
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+
+    post:
+      summary: Create a new Book
+      operationId: createNewBook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+      responses:
+        '201':
+          description: Book created successfully!
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+  /book/{id}:
+    get:
+      summary: Get single book
+      operationId: getBookDetails
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A single Book
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+
+    put:
+      summary: Update single book
+      operationId: updateBookDetails
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+
+      responses:
+        '200':
+          description: The updated Book
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+
+    delete:
+      summary: Delete a Book by ID
+      operationId: deleteBook
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Deleted successfully
+
+components:
+  schemas:
+    Book:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        title:
+          type: string
+          example: 'Api design'
+        availability:
+          type: boolean
+          example: true
+        price:
+          type: number
+          example: 1203.99
