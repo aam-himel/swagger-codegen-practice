@@ -141,6 +141,11 @@
 							<language>spring</language>
 							<generateApis>true</generateApis>
 							<generateModels>true</generateModels>
+							<importMappings>
+								<importMapping>
+									Book = com.swaggercodegen.swagger_codegen.model.Book
+								</importMapping>
+							</importMappings>
 							<generateSupportingFiles>false</generateSupportingFiles>
 							<generateApiTests>false</generateApiTests>
 							<configOptions>

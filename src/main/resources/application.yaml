@@ -3,13 +3,13 @@ spring:
     name: swagger-codegen
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/codegen
+    url: jdbc:postgresql://localhost:5433/codegen
     username: postgres
     password: passcode
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate:
